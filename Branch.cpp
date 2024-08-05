@@ -1,17 +1,18 @@
 #include "Branch.h"
 #include <algorithm>
-#include <exception>
-#include <stdexcept>
+#include "HWExceptions.h"
 
 Branch::Branch(const std::string& location, const int& capacity):
         location(location),itemCount(0),capacity(capacity)
 {
 }
+Branch::Branch(const Branch &other):location(other.location),capacity(other.capacity)
+{}
 
 void Branch::addItem(const std::shared_ptr<Item>& newItem)
 {
     if(itemCount==capacity)
-        throw  std::runtime_error("FullCatalogError");
+        throw  FullCatalogError();
 
     /* chatgpt suggested code: to check in case of error
      *    auto it = std::find_if(catalog.begin(), catalog.end(),
@@ -19,7 +20,7 @@ void Branch::addItem(const std::shared_ptr<Item>& newItem)
     */
     auto it = std::find(catalog.begin(), catalog.end(), newItem);
     if (it != catalog.end())
-        throw std::runtime_error("ExistingItemError");
+        throw ExistingItemError();
 
     catalog.push_back(newItem);
     itemCount++;
@@ -53,9 +54,9 @@ void Branch::setLocation(const std::string& location)
             itemCount--;
             return item.get();
         }
-        throw std::runtime_error("NonExistingItemError");
+        throw NonExistingItemError();
 }
-std::vector<Item*> Branch::convertToRawPointers(const std::vector<std::shared_ptr<Item>>& sharedCatalog) const
+std::vector<Item*> Branch::convertToRawPointers(const std::vector<std::shared_ptr<Item>>& sharedCatalog)
 {
     std::vector<Item*> norCatalog;
     for (const auto& item : sharedCatalog) {
@@ -85,7 +86,7 @@ T& Branch::giveMeFinest(const T &subItem) const
     }
     if (!finest)
     {
-        throw std::runtime_error("Trying to get an item with a non existing type");
+        throw NoneExistingItemTypeError();
     }
             return finest;
 }

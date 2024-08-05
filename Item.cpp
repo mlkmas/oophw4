@@ -37,9 +37,19 @@ int Item::getId() const
 
 Item::~Item()
 {
-    std::cout << "Throwing away an item - id : "<<id << std::endl;
+    std::cout << "Throwing away an item" << std::endl;
 }
 bool Item::operator==(const Item& other) const
 {
     return id == other.id;
+}
+bool Item::itemPtrCompare(const Item *ptr1,const Item *ptr2)
+{
+    return ptr1->id<ptr2->id;
+
+}
+std::ostream& operator<<(std::ostream& os, const Item& item)
+{
+    os << "id " << item.id <<": "<<item.manufacturer<<" "<<item.price<<"$";
+    return os;
 }

@@ -12,12 +12,13 @@ class Branch
     const int capacity;
 public:
     Branch(const std::string& location="~", const int& capacity=0);
-    void addItem( const std::shared_ptr<Item>& newItem);
+    Branch(const Branch &other);
+    void addItem( const Item& newItem);
     std::vector<Item*> getCatalog(int&) const;
     std::string getLocation() const;
     void setLocation(const std::string&);
     Item* removeItem(const int& id);
-    std::vector<Item*> convertToRawPointers(const std::vector<std::shared_ptr<Item>>& sharedCatalog) const;
+    static std::vector<Item*> convertToRawPointers(const std::vector<std::shared_ptr<Item>>& sharedCatalog) ;
 
     template<class T>
     T& giveMeFinest(const T& subItem)const;

@@ -15,9 +15,12 @@ public:
     std::string getManufacturer() const;
     virtual operator std::string() const = 0;
     int getId() const;
+    static bool itemPtrCompare(const Item *ptr1, const Item *ptr2);
 
     virtual ~Item();
 
     bool operator==(const Item& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Item& item) ;
 };
 
