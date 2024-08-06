@@ -1,8 +1,13 @@
-//
-// Created by malak on 31/07/2024.
-//
+#pragma once
+#include "PeripheralDevice.h"
+class Tablet :public PeripheralDevice
+{
+private:
+    int screenSize;
 
-#ifndef UNTITLED18_TABLET_H
-#define UNTITLED18_TABLET_H
 
-#endif //UNTITLED18_TABLET_H
+public:
+    Tablet(int price, const std::string& manufacturer, const std::string& color,const std::string &cpu,bool,int screen);
+    virtual void connect(Computer&) override;
+//    operator std::string() const override;
+};

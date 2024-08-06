@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "HWExceptions.h"
 class Item
 {
     int price;
@@ -18,9 +18,10 @@ public:
     static bool itemPtrCompare(const Item *ptr1, const Item *ptr2);
 
     virtual ~Item();
+    virtual void print()const;
 
     bool operator==(const Item& other) const;
 
-    friend std::ostream& operator<<(std::ostream& os, const Item& item) ;
+  //  friend std::ostream& operator<<(std::ostream& os, const Item& item) ;
 };
 

@@ -1,8 +1,14 @@
-//
-// Created by malak on 31/07/2024.
-//
+#pragma once
+#include "PeripheralDevice.h"
+class Keyboard :
+        public PeripheralDevice
+{
+    int numOfKeys;
+public:
+    Keyboard(int, const std::string&, const std::string&, bool, int);
+    int getNumberOfKeys() const;
+    void setNumberOfKeys(int);
+   // void connect(const Computer&) override;
+    operator std::string() const override;
+};
 
-#ifndef UNTITLED18_KEYBOARD_H
-#define UNTITLED18_KEYBOARD_H
-
-#endif //UNTITLED18_KEYBOARD_H

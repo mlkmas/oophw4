@@ -13,8 +13,8 @@ class Branch
 public:
     Branch(const std::string& location="~", const int& capacity=0);
     Branch(const Branch &other);
-    void addItem( const Item& newItem);
-    std::vector<Item*> getCatalog(int&) const;
+    void addItem(  Item* newItem);
+    std::vector<Item*> getCatalog() const;
     std::string getLocation() const;
     void setLocation(const std::string&);
     Item* removeItem(const int& id);

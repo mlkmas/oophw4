@@ -48,8 +48,12 @@ bool Item::itemPtrCompare(const Item *ptr1,const Item *ptr2)
     return ptr1->id<ptr2->id;
 
 }
-std::ostream& operator<<(std::ostream& os, const Item& item)
+void Item::print() const
 {
-    os << "id " << item.id <<": "<<item.manufacturer<<" "<<item.price<<"$";
-    return os;
+    std::cout << "id" <<id<<": "<<manufacturer<<" "<<price<<"$";
 }
+//std::ostream& operator<<(std::ostream& os, const Item& item)
+//{
+//    os << "id " << item.id <<": "<<item.manufacturer<<" "<<item.price<<"$";
+//    return os;
+//}

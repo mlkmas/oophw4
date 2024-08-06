@@ -3,4 +3,4 @@ project(untitled18)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled18 main.cpp Branch.cpp Branch.h Item.cpp Item.h Computer.cpp Computer.h Mouse.cpp Mouse.h Tablet.cpp Tablet.h Keyboard.cpp Keyboard.h PeripheralDevice.cpp PeripheralDevice.h HWExceptions.h)
+add_executable(untitled18 main.cpp Branch.cpp Branch.h Item.cpp Item.h Computer.cpp Computer.h Mouse.cpp Mouse.h Tablet.cpp Tablet.h Keyboard.cpp Keyboard.h PeripheralDevice.cpp PeripheralDevice.h HWExceptions.h MainOffice.cpp MainOffice.h)

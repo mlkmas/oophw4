@@ -9,7 +9,7 @@ Branch::Branch(const std::string& location, const int& capacity):
 Branch::Branch(const Branch &other):location(other.location),capacity(other.capacity)
 {}
 
-void Branch::addItem(const std::shared_ptr<Item>& newItem)
+void Branch::addItem( Item* newItem)
 {
     if(itemCount==capacity)
         throw  FullCatalogError();
@@ -18,11 +18,12 @@ void Branch::addItem(const std::shared_ptr<Item>& newItem)
      *    auto it = std::find_if(catalog.begin(), catalog.end(),
                            [id](const std::shared_ptr<Item>& item) { return item->getId() == id; });
     */
-    auto it = std::find(catalog.begin(), catalog.end(), newItem);
+    std::shared_ptr<Item> shared_ptr(newItem);
+    auto it = std::find(catalog.begin(), catalog.end(), shared_ptr);
     if (it != catalog.end())
         throw ExistingItemError();
 
-    catalog.push_back(newItem);
+    catalog.push_back(shared_ptr);
     itemCount++;
 
 }
@@ -64,9 +65,8 @@ std::vector<Item*> Branch::convertToRawPointers(const std::vector<std::shared_pt
     }
     return norCatalog;
 }
-std::vector<Item*> Branch::getCatalog(int& num) const
+std::vector<Item*> Branch::getCatalog() const
 {
-    num = itemCount;
     return convertToRawPointers(catalog) ;
 }
 template<class T>
