@@ -1,4 +1,5 @@
 #include "PeripheralDevice.h"
+#include "Computer.h"
 #include <iostream>
 #include <algorithm>
 
@@ -129,3 +130,7 @@ int PeripheralDevice::getCompCounter() const
 {
     return computerCount;
 }
+// int PeripheralDevice::getCompCounter() const
+//{
+//    return computerCount;
+//}

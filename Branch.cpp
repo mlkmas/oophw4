@@ -8,7 +8,16 @@ Branch::Branch(const std::string& location, const int& capacity):
 }
 Branch::Branch(const Branch &other):location(other.location),capacity(other.capacity)
 {}
+Branch&  Branch::operator=(const Branch& other){
+    if (this == &other) {
+        return *this;
+    }
 
+    catalog = other.catalog;
+    location = other.location;
+    itemCount = other.itemCount;
+    return *this;
+}
 void Branch::addItem( Item* newItem)
 {
     if(itemCount==capacity)
@@ -25,6 +34,7 @@ void Branch::addItem( Item* newItem)
 
     catalog.push_back(shared_ptr);
     itemCount++;
+    itemsSum+=newItem->getPrice();
 
 }
 
@@ -89,4 +99,17 @@ T& Branch::giveMeFinest(const T &subItem) const
         throw NoneExistingItemTypeError();
     }
             return finest;
+}
+
+int Branch::getItemSum()
+{
+    return itemsSum;
+}
+const int Branch::getItemSum() const
+{
+    return itemsSum;
+}
+void Branch::setItemSum(int price)
+{
+    itemsSum+=price;
 }

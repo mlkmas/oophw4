@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Computer.h"
+#include "PeripheralDevice.h"
 Computer::Computer(int price, const std::string& manufacturer, const std::string& cpu, bool isALaptop,const int numOfPorts):
         Item(price,manufacturer),cpu(cpu),isALaptop(isALaptop),numOfPorts(numOfPorts),devicesCounter(0){}
 void Computer::setCpu(const std::string& cpu)

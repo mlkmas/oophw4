@@ -5,6 +5,8 @@
 #include <memory>
 #include <stdexcept>
 #include "Branch.h"
+#include <vector>
+#include <memory>
 
 class MainOffice
 {
@@ -18,10 +20,14 @@ private:
 public:
     static MainOffice& getInstance();
     void addBranch(const std::string &location, int capacity);
-    void removeBranch(std::string &location);
-    const std::string& getBranch(const std::string &location)const;
+    void removeBranch(const std::string &location);
+    const Branch& getBranch(const std::string &location)const;
      void printBranchesByLocation(void (*printCatalog)(const Branch&))const;
     void printBranchesByValue(void (*printCatalog)(const Branch&))const;
+    Branch& getBranch(const std::string &location);
+    static bool compare(const std::pair<std::string, Branch>& a, const std::pair<std::string, Branch>& b);
+    static bool comparePrices(const std::pair<std::string, Branch>& a, const std::pair<std::string, Branch>& b);
+    //std::vector<std::pair<std::string,Branch>> sortMapInVector()const;
 
 
 

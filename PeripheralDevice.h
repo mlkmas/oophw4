@@ -1,21 +1,23 @@
-#ifndef UNTITLED18_PERIPHERALDEVICE_H
-#define UNTITLED18_PERIPHERALDEVICE_H
-#include "Computer.h"
-
+#pragma once
+#include "Item.h"
+#include <vector>
+#include <memory>
 enum class DeviceType{
     Keyboard,
     Mouse,
     Tablet
 };
+
 class Computer;
 
-class PeripheralDevice :public Item
+class PeripheralDevice :public virtual Item
 {
+protected:
     std::string color;
     bool isWireless;
-    int computerCount;
     DeviceType type;
     std::vector<std::weak_ptr<Computer>> connectedComputers;
+    int computerCount;
 public:
     PeripheralDevice(int, const std::string&, const std::string&, bool,DeviceType type);
    virtual ~PeripheralDevice()noexcept;
@@ -30,14 +32,10 @@ public:
     virtual void connect( Computer&);
     virtual void disconnect();
     virtual void print() const override;
-
     template<class T>
     static void printDevice(const std::shared_ptr<T>& ptr);
     static bool deviceExistsInComputer(const Computer& computer, const PeripheralDevice& device);
-
-
     const bool hasDeviceOfType(const Computer& computer)const;
+
 };
 
-
-#endif //UNTITLED18_PERIPHERALDEVICE_H

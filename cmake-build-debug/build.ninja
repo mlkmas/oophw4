@@ -51,55 +51,55 @@ build cmake_object_order_depends_target_untitled18: phony || CMakeFiles/untitled
 
 build CMakeFiles/untitled18.dir/main.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/main.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Branch.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Branch.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Branch.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Item.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Item.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Item.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Computer.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Computer.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Computer.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Mouse.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Mouse.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Mouse.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Tablet.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Tablet.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Tablet.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/Keyboard.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/Keyboard.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\Keyboard.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/PeripheralDevice.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/PeripheralDevice.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\PeripheralDevice.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
 build CMakeFiles/untitled18.dir/MainOffice.cpp.obj: CXX_COMPILER__untitled18_Debug C$:/Users/malak/CLionProjects/untitled18/MainOffice.cpp || cmake_object_order_depends_target_untitled18
   DEP_FILE = CMakeFiles\untitled18.dir\MainOffice.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles\untitled18.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled18.dir
 
