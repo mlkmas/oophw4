@@ -27,6 +27,7 @@ void Branch::addItem( Item* newItem)
      *    auto it = std::find_if(catalog.begin(), catalog.end(),
                            [id](const std::shared_ptr<Item>& item) { return item->getId() == id; });
     */
+    //if(finestItem== nullptr || newItem->getPrice()>)
     std::shared_ptr<Item> shared_ptr(newItem);
     auto it = std::find(catalog.begin(), catalog.end(), shared_ptr);
     if (it != catalog.end())
@@ -79,27 +80,27 @@ std::vector<Item*> Branch::getCatalog() const
 {
     return convertToRawPointers(catalog) ;
 }
-template<class T>
-T& Branch::giveMeFinest(const T &subItem) const
-{
-    T *finest= nullptr;
-    for(const auto &item :catalog)
-    {
-
-        if(typeid(*item) == typeid(T))
-        {
-            T* castedItem=dynamic_cast<T*>(item.get());
-            if(castedItem && (!finest || castedItem->getPrice() > finest->getPrice()))
-               finest = item;
-        }
-
-    }
-    if (!finest)
-    {
-        throw NoneExistingItemTypeError();
-    }
-            return finest;
-}
+//template<class T>
+//T& Branch::giveMeFinest(const T &subItem) const
+//{
+//    T *finest= nullptr;
+//    for(const auto &item :catalog)
+//    {
+//
+//        if(typeid(*item) == typeid(T))
+//        {
+//            T* castedItem=dynamic_cast<T*>(item.get());
+//            if(castedItem && (!finest || castedItem->getPrice() > finest->getPrice()))
+//               finest = item;
+//        }
+//
+//    }
+//    if (!finest)
+//    {
+//        throw NoneExistingItemTypeError();
+//    }
+//            return finest;
+//}
 
 int Branch::getItemSum()
 {

@@ -64,7 +64,7 @@ bool PeripheralDevice::deviceExistsInComputer(const Computer& computer, const Pe
 
 void PeripheralDevice::connect(Computer& computer)
 {
-    std::shared_ptr<Computer> sharedComputer = std::make_shared<Computer>(computer);
+    std::shared_ptr<Computer> sharedComputer = computer.shared_from_this();
     std::cout << static_cast<std::string>(*this) + " is connecting to computer: " + static_cast<std::string>(computer) << std::endl;
     if (deviceExistsInComputer(computer, *this))
         return;//device already exist, do nothing

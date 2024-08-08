@@ -11,7 +11,7 @@ private:
 public:
     Tablet(int price, const std::string& manufacturer, const std::string& color,const std::string &cpu,bool,int screen);
     virtual void connect(Computer& computer) override;
-    virtual void disconnect() override;
+    void disconnect() override;
     virtual void print() const override;
-//    operator std::string() const override;
+   operator std::string() const override;
 };

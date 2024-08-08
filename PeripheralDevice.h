@@ -28,7 +28,7 @@ public:
     void setColor(const std::string&);
     void setIsWireless(bool);
     DeviceType  getType()const;
-    operator std::string() const;
+    operator std::string() const override;
     virtual void connect( Computer&);
     virtual void disconnect();
     virtual void print() const override;

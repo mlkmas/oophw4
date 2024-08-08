@@ -5,7 +5,7 @@
 
 class PeripheralDevice;
 
-class Computer :public virtual Item
+class Computer :public virtual Item,  public std::enable_shared_from_this<Computer>
 {
 protected:
     std::string cpu;
@@ -19,7 +19,7 @@ public:
     void setIsALaptop(bool);
     std::string getCpu() const;
     bool getIsALaptop() const;
-    //operator std::string() const;
+    operator std::string() const override;
      void printConnected()const;
      void print()const override;
      int getNumOfPorts()const;

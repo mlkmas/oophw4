@@ -1,8 +1,9 @@
 #include "Mouse.h"
 #include <iostream>
-Mouse::Mouse(int price, const std::string& manufacturer, const std::string& color, bool isWireless, int dpi) :
-        PeripheralDevice(price, manufacturer, color, isWireless, DeviceType::Mouse), dpi(dpi) {}
-
+Mouse::Mouse(int price, const std::string& manufacturer, const std::string& color, bool isWireless, int dpi)
+        : Item(price, manufacturer), // Initialize the Item base class
+          PeripheralDevice(price, manufacturer, color, isWireless, DeviceType::Mouse), // Initialize the PeripheralDevice base class
+          dpi(dpi) {}
 int Mouse::getDpi() const
 {
     return dpi;
@@ -13,11 +14,11 @@ void Mouse::setDpi(int dpi)
     this->dpi = dpi;
 }
 
-//void Mouse::connect(const Computer& computer)
-//{
-//    std::cout << "Connecting a mouse" << std::endl;
-//    PeripheralDevice::connect(computer);
-//}
+void Mouse::connect( Computer& computer)
+{
+    std::cout << "Connecting a mouse" << std::endl;
+    PeripheralDevice::connect(computer);
+}
 
 Mouse::operator std::string() const
 {
