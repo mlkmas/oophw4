@@ -46,6 +46,9 @@ Branch&  Branch::operator=(const Branch& other)
 
     return *this;
 }
+int Branch::getItemCount() const {
+    return itemCount;
+}
 void Branch::addItem( Item* newItem)
 {
     if (itemCount == capacity)

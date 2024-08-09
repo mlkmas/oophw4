@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include <algorithm>
+#include <iostream>
 
 MainOffice &MainOffice::getInstance()
 {
@@ -46,28 +47,36 @@ bool MainOffice::comparePrices(Branch* a, Branch* b)
 
     return a->getItemSum() < b->getItemSum();
 }
-void MainOffice::printBranchesByLocation(void (*printCatalog)(const Branch &)) const {
+void MainOffice::printBranchesByLocation(void (*printCatalog)(const Branch &)) const
+{
     std::vector<Branch*> sortedBranches;
-    for (const auto& entry : branches) {
+    for (const auto& entry : branches)
+    {
         sortedBranches.push_back(const_cast<Branch*>(&entry.second));
     }
-
+    std::cout<<"There are "<<branches.size()<<" branches in Main Office:"<<std::endl;
     std::sort(sortedBranches.begin(), sortedBranches.end(), compare);
-
-    for (const auto& branch : sortedBranches) {
-        printCatalog(*branch); // Dereference the pointer to pass by reference
+    for (const auto& branch : sortedBranches)
+    {
+        std::cout<<branch->getLocation()<<" : Item count: "<<branch->getItemCount()<<", Total Value: "<<branch->getItemSum()<<std::endl;
+        printCatalog(*branch);
     }
 }
 
-void MainOffice::printBranchesByValue(void (*printCatalog)(const Branch &)) const {
+void MainOffice::printBranchesByValue(void (*printCatalog)(const Branch &)) const
+{
     std::vector<Branch*> sortedBranches;
-    for (const auto& entry : branches) {
+    std::cout<<"There are "<<branches.size()<<" branches in Main Office:"<<std::endl;
+    for (const auto& entry : branches)
+    {
         sortedBranches.push_back(const_cast<Branch*>(&entry.second));
     }
 
     std::sort(sortedBranches.begin(), sortedBranches.end(), comparePrices);
+    for (const auto& branch : sortedBranches)
+    {
+        std::cout<<branch->getLocation()<<" : Item count: "<<branch->getItemCount()<<", Total Value: "<<branch->getItemSum()<<std::endl;
 
-    for (const auto& branch : sortedBranches) {
-        printCatalog(*branch); // Dereference the pointer to pass by reference
+        printCatalog(*branch);
     }
 }

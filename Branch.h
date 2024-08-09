@@ -25,6 +25,7 @@ public:
     const int getItemSum()const;
     int getItemSum();
     void setItemSum(int price);
+    int getItemCount()const;
 
    // static std::vector<Item*> convertToRawPointers(const std::vector<std::shared_ptr<Item>>& sharedCatalog) ;
 
