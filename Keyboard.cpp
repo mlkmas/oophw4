@@ -14,7 +14,13 @@ void Keyboard::setNumberOfKeys(int nok)
 {
     numOfKeys = nok;
 }
+Keyboard::Keyboard(const Keyboard &other) : PeripheralDevice(other), Item(other),numOfKeys(other.numOfKeys)
+{}
 
+Keyboard *Keyboard::clone() const
+{
+    return new Keyboard(*this);
+}
 void Keyboard::connect( Computer& computer)
 {
     std::cout << "Connecting a keyboard" << std::endl;
@@ -23,5 +29,10 @@ void Keyboard::connect( Computer& computer)
 
 Keyboard::operator std::string() const
 {
-    return PeripheralDevice::operator std::string() + " Keyboard with "+std::to_string(numOfKeys)+" keys";
+    return PeripheralDevice::operator std::string() + ", Keyboard with "+std::to_string(numOfKeys)+" keys";
+}
+void Keyboard::print() const
+{
+    PeripheralDevice::print();
+    std::cout<< ", Keyboard with "+std::to_string(numOfKeys)+" keys"<<std::endl;
 }

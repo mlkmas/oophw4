@@ -136,6 +136,7 @@ int main()
     try
     {
         Item* removedItem = jerusalemBranch->removeItem(7);
+
         delete removedItem;
     }
     catch (std::exception& e)

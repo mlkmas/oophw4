@@ -9,6 +9,8 @@ class Item
     static int id_counter;
 public:
     Item(int price, std::string manufacturer);
+    Item(const Item &other)=default;
+    //Item& operator=(Item&other)=default;
     void setPrice(int);
     void setManufacturer(const std::string&);
     int getPrice() const;
@@ -16,7 +18,7 @@ public:
     virtual operator std::string() const = 0;
     int getId() const;
     static bool itemPtrCompare(const Item *ptr1, const Item *ptr2);
-
+    virtual Item* clone() const = 0;
     virtual ~Item();
     virtual void print()const;
 

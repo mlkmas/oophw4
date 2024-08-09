@@ -22,11 +22,11 @@ public:
     void addBranch(const std::string &location, int capacity);
     void removeBranch(const std::string &location);
     const Branch& getBranch(const std::string &location)const;
-     void printBranchesByLocation(void (*printCatalog)(const Branch&))const;
+    void printBranchesByLocation(void (*printCatalog)(const Branch&))const;
     void printBranchesByValue(void (*printCatalog)(const Branch&))const;
     Branch& getBranch(const std::string &location);
-    static bool compare(const std::pair<std::string, Branch>& a, const std::pair<std::string, Branch>& b);
-    static bool comparePrices(const std::pair<std::string, Branch>& a, const std::pair<std::string, Branch>& b);
+    static bool compare(Branch* a, Branch* b);
+    static bool comparePrices(Branch* a, Branch* b);
     //std::vector<std::pair<std::string,Branch>> sortMapInVector()const;
 
 

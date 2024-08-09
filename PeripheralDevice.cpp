@@ -61,65 +61,62 @@ bool PeripheralDevice::deviceExistsInComputer(const Computer& computer, const Pe
     }
     return false;
 }
-
-void PeripheralDevice::connect(Computer& computer)
-{
-    std::shared_ptr<Computer> sharedComputer = computer.shared_from_this();
+void PeripheralDevice::connect(Computer& computer) {
     std::cout << static_cast<std::string>(*this) + " is connecting to computer: " + static_cast<std::string>(computer) << std::endl;
     if (deviceExistsInComputer(computer, *this))
-        return;//device already exist, do nothing
-     if(computerCount>=2 || !this->hasDeviceOfType(computer) || computer.getNumOfPorts()<=computer.getDevicesCounter())
-     {
-         throw ConnectError();
-     }
-
-    computer.getDevices().push_back(std::shared_ptr<PeripheralDevice>(this));//or do we have to make shared? computer.getDevices().push_back(shared_from_this());
-    connectedComputers.push_back(sharedComputer); //
-    ++computerCount;
-
-}
-
-void PeripheralDevice::disconnect()
-{
-    for (auto it = connectedComputers.begin(); it != connectedComputers.end();)
     {
-        if (auto computer = it->lock()) //convert to shared
+        throw ConnectError();
+        return; // Device already exists, do nothing
+    }
+    if (computerCount >= 2 || !this->hasDeviceOfType(computer) || computer.getNumOfPorts() <= computer.getDevicesCounter()) {
+        throw ConnectError();
+    }
+
+    computer.getDevices().push_back(this);
+    connectedComputers.push_back(&computer);
+    ++computerCount;
+}
+void PeripheralDevice::disconnect() {
+    for (auto it = connectedComputers.begin(); it != connectedComputers.end();) {
+        Computer* computer = *it;
+        if (computer)
         {
+            //find the device in the computer and Remove it from the computer's vector
             auto& devices = computer->getDevices();
-            //find the device from the computers vector using lambds func
-            auto deviceIt = std::remove_if(devices.begin(), devices.end(),
-                                           [this](const std::shared_ptr<PeripheralDevice>& d)
-                                           {
-                                               return d.get() == this;
-                                           });
-            //remove the device from comp vector
-            if (deviceIt != devices.end()) {
-                devices.erase(deviceIt, devices.end());
-                std::cout << "Disconnected from " << static_cast<std::string>(*computer) << std::endl;
+            for (auto devIt = devices.begin(); devIt != devices.end(); ++devIt)
+            {
+                if (*devIt == this)
+                {
+                    devices.erase(devIt);  //is it okay to remove from outside of the class?
+                    computer->setDevicesCounter(-1);
+                    //std::cout << "Disconnected from " << static_cast<std::string>(*computer) << std::endl;
+                    break;
+                }
             }
-            //remove the connected Computers of the device
-            it = connectedComputers.erase(it);
+            it = connectedComputers.erase(it);  // Remove the computer from connectedComputers
         } else {
             ++it;
         }
     }
     computerCount = 0;
-    std::cout << "Device disconnected from all computers." << std::endl;
+    //std::cout << "Device disconnected from all computers." << std::endl;
 }
-
-
-
-
-
-
+PeripheralDevice::PeripheralDevice(const PeripheralDevice &other) : Item(other),color(other.color),isWireless(other.isWireless),type(other.type),computerCount(other.computerCount)
+{
+    connectedComputers.reserve(other.connectedComputers.size());
+    for (const Computer* computer : other.connectedComputers)
+    {
+        connectedComputers.push_back(computer->clone());
+    }
+}
 PeripheralDevice::operator std::string() const
 {
     return Item::operator std::string()+", "+(isWireless?"Wireless":"Wired")+", "+color;
 }
 void PeripheralDevice::print() const
 {
-  Item::print();
-    std::cout << "Peripheral: " << color << ", " << (isWireless ? "Wireless" : "Wired") << std::endl;
+     Item::print();
+     std::cout<< ", "<<(isWireless?"Wireless":"Wired")<<", "<<color;
 }
 template<class T>
 void PeripheralDevice::printDevice(const std::shared_ptr<T> &ptr)
@@ -129,6 +126,11 @@ void PeripheralDevice::printDevice(const std::shared_ptr<T> &ptr)
 int PeripheralDevice::getCompCounter() const
 {
     return computerCount;
+}
+
+PeripheralDevice *PeripheralDevice::clone() const
+{
+    return new PeripheralDevice(*this);
 }
 // int PeripheralDevice::getCompCounter() const
 //{

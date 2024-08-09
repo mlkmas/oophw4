@@ -16,11 +16,12 @@ protected:
     std::string color;
     bool isWireless;
     DeviceType type;
-    std::vector<std::weak_ptr<Computer>> connectedComputers;
+    std::vector<Computer*> connectedComputers;
     int computerCount;
 public:
     PeripheralDevice(int, const std::string&, const std::string&, bool,DeviceType type);
    virtual ~PeripheralDevice()noexcept;
+   PeripheralDevice(const PeripheralDevice &other);
    void perfomCleanUp();
     std::string getColor() const;
     bool getIsWireless() const;
@@ -32,6 +33,7 @@ public:
     virtual void connect( Computer&);
     virtual void disconnect();
     virtual void print() const override;
+    virtual PeripheralDevice* clone() const override;
     template<class T>
     static void printDevice(const std::shared_ptr<T>& ptr);
     static bool deviceExistsInComputer(const Computer& computer, const PeripheralDevice& device);

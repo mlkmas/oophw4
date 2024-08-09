@@ -14,4 +14,6 @@ public:
     void disconnect() override;
     virtual void print() const override;
    operator std::string() const override;
+   Tablet(const Tablet& other);
+   Tablet* clone() const override;
 };

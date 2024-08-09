@@ -50,7 +50,7 @@ bool Item::itemPtrCompare(const Item *ptr1,const Item *ptr2)
 }
 void Item::print() const
 {
-    std::cout << "id" <<id<<": "<<manufacturer<<" "<<price<<"$";
+    std::cout << "id " <<id<<": "<<manufacturer<<", "<<price<<"$";
 }
 //std::ostream& operator<<(std::ostream& os, const Item& item)
 //{

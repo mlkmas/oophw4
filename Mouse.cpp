@@ -8,7 +8,13 @@ int Mouse::getDpi() const
 {
     return dpi;
 }
+Mouse::Mouse(const Mouse &other) : Item(other), PeripheralDevice(other),dpi(other.dpi)
+{}
 
+Mouse *Mouse::clone() const
+{
+    return new Mouse(*this);
+}
 void Mouse::setDpi(int dpi)
 {
     this->dpi = dpi;
@@ -23,4 +29,11 @@ void Mouse::connect( Computer& computer)
 Mouse::operator std::string() const
 {
     return PeripheralDevice::operator std::string() + ", Mouse with dpi : " + std::to_string(dpi);
+
+}
+void Mouse::print() const
+{
+    PeripheralDevice::print();
+    std::cout<< ", Mouse with dpi : " + std::to_string(dpi)<<std::endl;
+
 }

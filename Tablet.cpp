@@ -15,6 +15,13 @@ void Tablet::connect(Computer& computer)
 
     else throw ConnectError();
 }
+Tablet::Tablet(const Tablet &other): Computer(other), PeripheralDevice(other), Item(other),screenSize(other.screenSize)
+{}
+
+Tablet *Tablet::clone() const
+{
+    return new Tablet(*this);
+}
 void Tablet::disconnect()
 {
     std::cout << "the tablet is disconnecting" << std::endl;
@@ -24,7 +31,7 @@ void Tablet::disconnect()
 Tablet::operator std::string() const
 {
     // Combine the string representations from both base classes
-    return PeripheralDevice::operator std::string() + ", " + Computer::operator std::string() + ", Screen size: " + std::to_string(screenSize) + " inches";
+    return Item::operator std::string()+", "+color+", CPU, Tablet with screen size: " + std::to_string(screenSize);
 }
 void Tablet::print() const
 {

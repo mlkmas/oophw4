@@ -10,4 +10,7 @@ public:
     void setDpi(int);
   void connect( Computer&) override;
     operator std::string() const override;
+    virtual void print() const override;
+    Mouse(const Mouse& other);
+     Mouse* clone() const override;
 };

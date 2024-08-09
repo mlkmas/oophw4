@@ -10,5 +10,8 @@ public:
     void setNumberOfKeys(int);
    void connect( Computer&) override;
     operator std::string() const override;
+    virtual void print() const override;
+    Keyboard(const Keyboard& other);
+     Keyboard* clone() const override;
 };
 

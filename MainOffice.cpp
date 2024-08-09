@@ -5,10 +5,10 @@
 #include <algorithm>
 
 MainOffice &MainOffice::getInstance()
-    {
-        static MainOffice instance;
-        return instance;
-    }
+{
+    static MainOffice instance;
+    return instance;
+}
 
 void MainOffice::addBranch(const std::string &location, int capacity)
 {
@@ -28,61 +28,46 @@ const Branch &MainOffice::getBranch(const std::string &location) const
         throw NonExistingBranchRetrieveError();
     return result->second;
 }
- Branch &MainOffice::getBranch(const std::string &location)
+Branch &MainOffice::getBranch(const std::string &location)
 {
     auto result=branches.find(location);
     if(result==branches.end())
         throw NonExistingBranchRetrieveError();
     return result->second;
 }
-bool MainOffice::compare(const std::pair<std::string, Branch>& a, const std::pair<std::string, Branch>& b)
+bool MainOffice::compare(Branch* a, Branch* b)
 {
-    return a.first < b.first;
+    return a->getLocation() < b->getLocation();
 }
-bool MainOffice::comparePrices(const std::pair<std::string, Branch> &a, const std::pair<std::string, Branch> &b)
+bool MainOffice::comparePrices(Branch* a, Branch* b)
 {
-   if(a.second.getItemSum() == b.second.getItemSum())
-      return a.first < b.first;
+    if(a->getItemSum() == b->getItemSum())
+        return a->getLocation() < b->getLocation();
 
-   return a.second.getItemSum() < b.second.getItemSum();
+    return a->getItemSum() < b->getItemSum();
 }
-//std::vector<std::pair<std::string, Branch>> MainOffice::sortMapInVector()const
-//{
-//    std::vector<std::pair<std::string, Branch>> pairVec(branches.begin(), branches.end());
-//    std::sort(pairVec.begin(), pairVec.end(), compare);
-//
-//    return pairVec;
-//}
-//
+void MainOffice::printBranchesByLocation(void (*printCatalog)(const Branch &)) const {
+    std::vector<Branch*> sortedBranches;
+    for (const auto& entry : branches) {
+        sortedBranches.push_back(const_cast<Branch*>(&entry.second));
+    }
 
+    std::sort(sortedBranches.begin(), sortedBranches.end(), compare);
 
-//std::vector<std::pair<std::string,Branch>> MainOffice::sortMapInVector(std::map<std::string, Branch> &other)
-//{
-//    std::vector<std::pair <std::string, Branch> > pairVec;
-//
-//    for ( auto& it : other ) {
-//        pairVec.push_back( it );
-//    }
-//
-//    std::sort( pairVec.begin(), pairVec.end(), compare);
-//
-//}
-void MainOffice::printBranchesByLocation(void (*printCatalog)(const Branch &)) const
-{
-    std::vector<std::pair<std::string, Branch>> pairVec(branches.begin(), branches.end());
-    std::sort(pairVec.begin(), pairVec.end(), MainOffice::compare);
-    for(const auto& it: pairVec)
-    {
-        printCatalog(it.second);
+    for (const auto& branch : sortedBranches) {
+        printCatalog(*branch); // Dereference the pointer to pass by reference
     }
 }
-void MainOffice::printBranchesByValue(void (*printCatalog)(const Branch &)) const
-{
-    std::vector<std::pair<std::string, Branch>> pairVec(branches.begin(), branches.end());
-    std::sort(pairVec.begin(), pairVec.end(), MainOffice::comparePrices);
 
-    for (const auto& it : pairVec)
-    {
-        printCatalog(it.second);
+void MainOffice::printBranchesByValue(void (*printCatalog)(const Branch &)) const {
+    std::vector<Branch*> sortedBranches;
+    for (const auto& entry : branches) {
+        sortedBranches.push_back(const_cast<Branch*>(&entry.second));
+    }
+
+    std::sort(sortedBranches.begin(), sortedBranches.end(), comparePrices);
+
+    for (const auto& branch : sortedBranches) {
+        printCatalog(*branch); // Dereference the pointer to pass by reference
     }
 }
