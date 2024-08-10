@@ -66,7 +66,7 @@ id 6: Manufacturer2, 25$, Wireless, Orange, Keyboard with 21 keys
 id 13: Manufacturer4, 410$, Desktop, Blue
 id 14: Manufacturer5, 41$, Wireless, Silver, Mouse with dpi : 250
 
-There are 3 branches in Main Office:
+There are 3 branches in Main Office: 
 Jerusalem : Item count: 3, Total Value: 216
 Printing KSF Branch in Jerusalem
 There are 3 items in the catalog: 
@@ -95,7 +95,7 @@ Throwing away an item
 Throwing away an item
 Throwing away an item
 
-There are 2 branches in Main Office:
+There are 2 branches in Main Office: 
 Haifa : Item count: 6, Total Value: 422
 Printing KSF Branch in Haifa
 There are 6 items in the catalog: 
