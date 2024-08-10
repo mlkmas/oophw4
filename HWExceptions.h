@@ -60,7 +60,7 @@ public:
     ~ExistingItemError ()=default;
     virtual const char* what() const noexcept override
     {
-        return "Trying to add an item with an id already in the catalog";
+        return "Trying to add an item with an id already in the catalog ";
     }
 
 };

@@ -66,7 +66,7 @@ void MainOffice::printBranchesByLocation(void (*printCatalog)(const Branch &)) c
 void MainOffice::printBranchesByValue(void (*printCatalog)(const Branch &)) const
 {
     std::vector<Branch*> sortedBranches;
-    std::cout<<"There are "<<branches.size()<<" branches in Main Office:"<<std::endl;
+    std::cout<<"There are "<<branches.size()<<" branches in Main Office: "<<std::endl;
     for (const auto& entry : branches)
     {
         sortedBranches.push_back(const_cast<Branch*>(&entry.second));
