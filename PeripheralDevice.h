@@ -2,6 +2,7 @@
 #include "Item.h"
 #include <vector>
 #include <memory>
+#define TWO_COMPUTERS 2
 enum class DeviceType{
     Keyboard,
     Mouse,

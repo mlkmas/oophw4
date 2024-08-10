@@ -68,7 +68,7 @@ void PeripheralDevice::connect(Computer& computer) {
         throw ConnectError();
         return; // Device already exists, do nothing
     }
-    if (computerCount >= 2 || !this->hasDeviceOfType(computer) || computer.getNumOfPorts() <= computer.getDevicesCounter()) {
+    if (computerCount >= TWO_COMPUTERS || !this->hasDeviceOfType(computer) || computer.getNumOfPorts() <= computer.getDevicesCounter()) {
         throw ConnectError();
     }
 

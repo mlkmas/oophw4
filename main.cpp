@@ -27,7 +27,7 @@ void print_branch_catalog(const Branch& branch)
 
 int main()
 {
-    //freopen("main_output.txt", "w", stdout);
+    freopen("main_output.txt", "w", stdout);
 
 
     MainOffice& mo = MainOffice::getInstance();

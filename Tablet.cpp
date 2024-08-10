@@ -10,7 +10,7 @@ void Tablet::connect(Computer& computer)
 {
 
     std::cout << "Connecting a Tablet" << std::endl;
-    if( computerCount<1)
+    if( computerCount<ONE_COMPUTER)
         PeripheralDevice::connect(computer);
 
     else throw ConnectError();

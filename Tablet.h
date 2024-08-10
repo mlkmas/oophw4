@@ -1,7 +1,7 @@
 #pragma once
 #include "PeripheralDevice.h"
 #include "Computer.h"
-
+#define ONE_COMPUTER 1
 class Tablet :public PeripheralDevice ,public Computer
 {
 private:
